@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>div{height:500px;}</style>
+    <script
+    src="https://maps.googleapis.com/maps/api/js">
+</script>
+</head>
+<body>
+    <div id="div"></div>
+    <script>
+        let div = document.querySelector('div');
+        if (navigator.geolocation) {
+            alert('supported')
+            navigator.geolocation.getCurrentPosition(showcurrentposition);
+            function showcurrentposition(pos){
+                let lon =pos.coords.longitude;
+                let lat =pos.coords.latitude;
+
+            
+           let latlong= new google.maps.LatLng(lat,lon);
+           let mymap= new google.maps.Map(div,{
+            zoom:20,
+            center:latlong,
+            mapTypeId:'roadmap'
+
+           })
+           new google.maps.Marker(
+            {title:'my location',
+             position:latlong,
+             map:mymap
+            }
+           )
+        }
+            
+        } else {
+alert('not supported')
+        }
+
+    </script>
+    
+</body>
+</html>
