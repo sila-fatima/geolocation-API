@@ -16,15 +16,15 @@
 
 <body>
     <div id="div"></div>
-    <h1>hello</h1>
+
     <script>
         let div = document.querySelector('div');
         if (navigator.geolocation) {
             alert('supported')
             navigator.geolocation.getCurrentPosition(showcurrentposition);
-            function showcurrentposition(pos) {
-                let lon = pos.coords.longitude;
-                let lat = pos.coords.latitude;
+            function showcurrentposition(position) {
+                let lon = position.coords.longitude;
+                let lat = position.coords.latitude;
 
 
                 let latlong = new google.maps.LatLng(lat, lon);
